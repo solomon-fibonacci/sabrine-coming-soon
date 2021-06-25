@@ -163,4 +163,19 @@
             }, settings.delay / 2)
         }, settings.delay)
     })()
+    function ValidateEmail(mail) {
+        if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail)) {
+            return true
+        }
+        alert('You have entered an invalid email address!')
+        return false
+    }
+    var $form = document.querySelectorAll('#mc-embedded-subscribe-form')[0]
+    $form.addEventListener('submit', function (event) {
+        event.stopPropagation()
+        event.preventDefault()
+        if (ValidateEmail(event.target.querySelectorAll('#mce-EMAIL')[0].value)) {
+            $form.submit()
+        }
+    })
 })()
